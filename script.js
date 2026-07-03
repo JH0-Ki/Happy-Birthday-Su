@@ -72,6 +72,10 @@ window.onYouTubeIframeAPIReady = function () {
     events: {
       onReady: () => {
         ytReady = true;
+        // 플레이어가 준비된 뒤에만 시작 버튼 활성화
+        // (준비 전에 누르면 모바일에서 음악 재생 권한을 얻지 못함)
+        startBtn.disabled = false;
+        startBtn.textContent = '시작하기 💌';
         if (musicRequested) playMusic();
       },
     },
@@ -163,5 +167,16 @@ function startFireworkStage() {
     window.startFireworks();
   }
 }
+
+// 유튜브 플레이어가 준비될 때까지 시작 버튼 비활성화
+startBtn.disabled = true;
+startBtn.textContent = '준비 중...';
+// 혹시 유튜브 로딩이 실패해도 8초 후에는 버튼을 열어줌 (음악 없이 진행)
+setTimeout(() => {
+  if (startBtn.disabled) {
+    startBtn.disabled = false;
+    startBtn.textContent = '시작하기 💌';
+  }
+}, 8000);
 
 startBtn.addEventListener('click', startSequence);
