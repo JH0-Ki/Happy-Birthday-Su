@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Su♥</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 시작 화면 -->
+  <section id="start-screen" class="screen active">
+    <h1>오늘은 특별한 날 💌</h1>
+    <button id="start-btn">시작하기 💌</button>
+  </section>
+
+  <!-- 사진 슬라이드쇼 화면 -->
+  <section id="slideshow-screen" class="screen">
+    <img class="slide-img" id="slide-a" src="" alt="">
+    <img class="slide-img" id="slide-b" src="" alt="">
+  </section>
+
+  <!-- 편지 화면 -->
+  <section id="letter-screen" class="screen">
+    <div id="letter-box">
+      <p id="letter-text"></p>
+    </div>
+  </section>
+
+  <!-- 유튜브 배경음악 (화면에 보이지 않게 숨김) -->
+  <div id="yt-player-wrap">
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- 폭죽 화면 -->
+  <section id="firework-screen" class="screen">
+    <canvas id="firework-canvas"></canvas>
+    <h2 id="firework-message">생일 축하해 공주야 🎉</h2>
+  </section>
+
+  <script src="script.js"></script>
+  <script src="fireworks.js"></script>
+</body>
+</html>

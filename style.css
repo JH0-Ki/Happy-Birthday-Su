@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  overflow: hidden;
+  background: #111;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* 시작 화면 */
+#start-screen {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+}
+
+#start-screen h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #5a2a3a;
+}
+
+#start-btn {
+  padding: 16px 36px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 40px;
+  background: #ff5e7e;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 94, 126, 0.4);
+  transition: transform 0.2s ease;
+}
+
+#start-btn:hover {
+  transform: scale(1.05);
+}
+
+/* 사진 슬라이드쇼 화면 */
+#slideshow-screen {
+  background: #000;
+}
+
+.slide-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  max-width: 68%;
+  max-height: 72%;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out, transform 1.4s ease-in-out;
+}
+
+.slide-img.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 편지 화면 */
+#letter-screen {
+  background: linear-gradient(135deg, #2c2c54, #474787);
+  transition: opacity 1.2s ease;
+}
+
+#letter-box {
+  max-width: 640px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+#letter-text {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+/* 유튜브 배경음악 플레이어 숨김 */
+#yt-player-wrap {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0.01;
+  pointer-events: none;
+  bottom: 0;
+  right: 0;
+}
+
+/* 폭죽 화면 */
+#firework-screen {
+  background: #000;
+}
+
+#firework-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#firework-message {
+  position: relative;
+  z-index: 2;
+  font-size: 3rem;
+  text-shadow: 0 0 30px rgba(255,255,255,0.6);
+}
