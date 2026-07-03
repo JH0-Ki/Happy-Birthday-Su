@@ -81,10 +81,12 @@ window.onYouTubeIframeAPIReady = function () {
 function playMusic() {
   musicRequested = true;
   if (ytReady && ytPlayer) {
-    ytPlayer.seekTo(0, true); // 노래를 처음부터
-    ytPlayer.unMute();
-    ytPlayer.setVolume(70);
-    ytPlayer.playVideo();
+    // 이미 재생 중이면 그대로 두고, 아니면 재생 시작
+    if (ytPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+      ytPlayer.unMute();
+      ytPlayer.setVolume(70);
+      ytPlayer.playVideo();
+    }
   }
 }
 
@@ -100,12 +102,8 @@ function showScreen(name) {
 }
 
 function startSequence() {
-  // 사용자 클릭 시점에 무음으로 잠깐 재생해서 브라우저 자동재생 차단을 해제
-  if (ytReady && ytPlayer) {
-    ytPlayer.mute();
-    ytPlayer.playVideo();
-    setTimeout(() => { if (!musicRequested) ytPlayer.pauseVideo(); }, 300);
-  }
+  // 모바일 자동재생 정책 때문에 음악은 반드시 사용자가 버튼을 누르는 순간 시작해야 함
+  playMusic();
   showScreen('slideshow');
   // 다음 사진이 즉시 뜨도록 미리 로드
   photos.forEach(src => { const img = new Image(); img.src = src; });
